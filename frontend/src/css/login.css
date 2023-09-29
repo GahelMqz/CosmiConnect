@@ -1,8 +1,30 @@
-body{
+* {}
+
+body {
     background-image: url('../imgs/planeta-login.jpg');
     background-size: cover;
 }
 
-h1{
+h1 {
     color: #F5D5E0;
+}
+
+input {
+    background-color: #C874B2;
+    border: solid #C874B2;
+    border-radius: 10px;
+}
+
+input:focus {
+    outline: red;
+}
+
+input::placeholder {
+    color: #F5D5E0;
+}
+
+input[type='submit'] {
+    background-color: #F5D5E0;
+    border: solid #F5D5E0;
+    outline: #F5D5E0;
 }
