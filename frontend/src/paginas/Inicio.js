@@ -1,21 +1,13 @@
+import '../css/inicio.css'
 import React from "react";
+import Header from '../Componentes/Header';
 
-import Encabezado from "../Componentes/Encabezado";
-
-//2 
-
-function Inicio(){
-    //3
-    return(
+function Inicio() {
+    return (
         <>
-        <Encabezado/>
-        <div className="container">
-            <h1>Bienvenidos a nuestro portal</h1>
-        </div>
+            <Header />
         </>
     );
 }
-
-//4
 
 export default Inicio;
