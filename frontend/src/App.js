@@ -6,19 +6,23 @@ import Inicio from './paginas/Inicio';
 import Login from './paginas/Login';
 import Register from './paginas/Register';
 import Nosotros from './paginas/Nosotros';
-import Categorias from './paginas/Categorias';
-import Contacto from './paginas/Contacto';
+import Contactanos from './paginas/Contactanos';
+import Horoscopo from './paginas/Horoscopo';
+import Dashboard from './Dashboard/Dashboard';
+
+
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Inicio />}></Route>
-        <Route path='login' element={<Login />}></Route>
-        <Route path='register' element={<Register />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/register' element={<Register />}></Route>
         <Route path='/nosotros' element={<Nosotros />}></Route>
-        <Route path='/categorias' element={<Categorias />}></Route>
-        <Route path='/contacto' element={<Contacto />}></Route>
+        <Route path='/contactanos' element={<Contactanos />}></Route>
+        <Route path='/horoscopo' element={<Horoscopo />}></Route>
+        <Route path='/dashboard' element={<Dashboard />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -1,27 +1,21 @@
-import '../css/nosotros.css'
+import '../css/horoscopo.css'
 import React from "react";
 import { Link } from 'react-router-dom';
 import Header from '../Componentes/Header';
 import Footer from '../Componentes/Footer';
 
-function Nosotros() {
+function Horoscopo() {
     return (
         <>
             <body>
                 <Header />
                 <div class="section-one">
-                    <div className='section-sub-one'>
-                        <div className='section-mini-one'>
-                            <h1>¡Descubre el Universo en CosmiConnect!</h1>
-                            <p className='p-left'>Descubre el espacio como nunca antes. Horóscopos, planetas, estrellas y satélites, todo en un solo lugar. Únete a nosotros y despierta tu pasión por el universo.</p>
-                            <div className='container-btn-home'>
-                                <Link to="/login"><button type="submit" className="btn-login">
-                                    ¡Comienza ahora!
-                                </button>
-                                </Link>
-                            </div>
-                        </div>
-                        <img className='img-one-home' src={require("../imgs/planeta.png")} alt="Planeta" />
+                    <h1>¡Descubre el tu horóscopo!</h1>
+                    <div className="p-centrado">
+                        <p className="p-contactanos">Descubre el espacio como nunca antes. Horóscopos, planetas, estrellas y satélites, todo en un solo lugar. Únete a nosotros y despierta tu pasión por el universo.</p>
+                    </div>
+                    <div className="container-img">
+                        <img className='img-one-home' src={require("../imgs/horoscopo.png")} alt="Satélite" />
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                         <path fill="#430D4B" fill-opacity="1"
@@ -56,4 +50,4 @@ function Nosotros() {
     );
 }
 
-export default Nosotros;
+export default Horoscopo;

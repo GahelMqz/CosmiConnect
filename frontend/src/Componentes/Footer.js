@@ -5,14 +5,10 @@ import { Link } from 'react-router-dom';
 function Footer() {
     return (
         <>
-            <footer>
-                <div className='footer'>
-                    <p className='footer-p'>
-                        Todos los derechos reservados © | SM-43 | Gahel Marquez | Emiliano Guerrero
-                        Peralta
-                    </p>
-                </div>
-            </footer>
+            <div class="section-footer">
+                <Link to="/"><img className='logo-header' src={require("../imgs/logo.png")} alt="Logo" /></Link>
+                <p className='parrafo-footer'>Todos los derechos reservados</p>
+            </div>
         </>
     );
 }

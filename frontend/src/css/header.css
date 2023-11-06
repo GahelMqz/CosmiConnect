@@ -1,7 +1,6 @@
 header {
     display: flex;
     justify-content: center;
-
 }
 
 .nav-links {
@@ -73,7 +72,7 @@ header {
 }
 
 .btn-login {
-    width: 100%;
+    width: 25vh;
     height: 45px;
     background: #F5D5E0;
     border: none;
@@ -96,4 +95,8 @@ header {
 .btn-login:not(hover) {
     transform: scale(1);
     transition: all 0.3s ease;
+}
+
+.logo-header{
+    width: 100px; 
 }

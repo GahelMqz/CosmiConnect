@@ -1,0 +1,49 @@
+aside {
+    width: 25%;
+    background-color: #210535;
+}
+
+.container-cabecera-dashboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid #F5D5E0 10px;
+    padding: 40px;
+}
+
+.body-dashboard{
+    background-color: #430D4B;
+}
+
+.section-one-dashboard{
+    background-color: #430D4B;
+    width: 100%;
+}
+
+.section-two-dashboard{
+    background-color: #7B337D;
+    width: 100%;
+}
+
+.temp{
+    display: flex;
+}
+
+.prueba{
+    display: block;
+}
+
+.h1-dashboard{
+    text-align: start;
+}
+
+.section-mini-one-dashboard{
+    display: flex;
+    align-items: center;
+    background-color: green;
+}
+
+.container-btn-home-dashboard{
+    background: yellow;
+    
+}

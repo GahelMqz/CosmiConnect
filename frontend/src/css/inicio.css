@@ -1,43 +1,92 @@
-section {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 400px;
-    padding-top: 100px;
-  }
+body {
+  margin: 0;
+  background-color: #210535;
+}
 
-  .blue {
-    background: #3c31dd;
-  }
+.section-one {
+  background-color: #210535;
+  color: white;
+  text-align: start;
+  margin-top: 80px;
+}
 
-  .curve {
-    position: absolute;
-    height: 250px;
-    width: 100%;
-    bottom: 0;
-    text-align: center;
-  }
+.section-two {
+  background-color: #430D4B;
+  color: white;
+  text-align: center;
+}
 
-  .curve::before {
-    content: '';
-    display: block;
-    position: absolute;
-    border-radius: 100% 50%;
-    width: 55%;
-    height: 100%;
-    transform: translate(85%, 60%);
-    background-color: hsl(74, 21%, 16%);
-  }
+.section-three {
+  background-color: #7B337D;
+  color: white;
+  text-align: center;
+}
 
-  .curve::after {
-    content: '';
-    display: block;
-    position: absolute;
-    border-radius: 100% 50%;
-    width: 55%;
-    height: 100%;
-    background-color: #3c31dd;
-    transform: translate(-4%, 40%);
-    z-index: -1;
-  }
+.section-four {
+  background-color: #C874B2;
+  color: white;
+  text-align: center;
+}
+
+svg {
+  display: block;
+}
+
+.img-one-home{
+  width: 40%;
+  height: 40%;
+}
+
+.section-sub-one{
+  display: flex;
+  padding-right: 20%;
+  padding-left: 10%;
+  align-items: center;
+  
+}
+
+.section-mini-one{
+  padding-left: 8%;
+  padding-right: 25%;
+  
+}
+
+h1{
+  font-size: 4rem;
+  text-align: center;
+}
+
+.p-left{
+  font-size: 2rem;
+  color: #C874B2;
+  text-align: start;
+}
+
+.p-right{
+  font-size: 2rem;
+  color: #C874B2;
+  text-align: end;
+}
+
+.p-pink{
+  font-size: 2rem;
+  text-align: end;
+  color: #7B337D;
+}
+
+.container-btn-home{
+  display: flex;
+  justify-content: center;
+}
+
+.section-sub-two{
+  display: flex;
+  padding-right: 18%;
+  padding-left: 12%;
+  align-items: center;  
+}
+
+.section-mini-two{
+  padding-left: 25%;
+  padding-right: 8%;  
+}
