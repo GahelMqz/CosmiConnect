@@ -8,7 +8,7 @@ function Header() {
         <header>
             <ul class="nav-links">
                 <li class="center"><Link to="/">Logo</Link></li>
-                <li class="center"><Link to="">Despierta tu curiosidad</Link></li>
+                <li class="center"><Link to="/nasa">Despierta tu curiosidad</Link></li>
                 <li class="center"><Link to="">Horóscopo</Link></li>
                 <li class="center"><Link to="">Nosotros</Link></li>
                 <li class="center"><Link to="">Contáctanos</Link></li>
