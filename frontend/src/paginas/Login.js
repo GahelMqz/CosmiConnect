@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../css/login.css'
+import Login_G from "../Logins/Login_G";
+import Login_T from "../Logins/Login_T";
 
 function login() {
     return (
@@ -27,6 +29,8 @@ function login() {
                         <button type="submit" className="btn-login">
                             ¡Comienza ahora!
                         </button>
+                        <Login_G></Login_G>
+                        <Login_T></Login_T>
                         <div className="register-link">
                             <p>
                                 No tienes cuenta? <Link to="/register">Regístrate aquí</Link>
