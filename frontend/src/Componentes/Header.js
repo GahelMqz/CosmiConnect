@@ -8,8 +8,8 @@ function Header() {
         <header>
             <ul class="nav-links">
                 <Link to="/"><img className='logo-header' src={require("../imgs/logo.png")} alt="Logo" /></Link>
-                <li class="center"><Link to="/nasa">Despierta tu curiosidad</Link></li>
-                <li class="center"><Link to="/horoscopo">Horóscopo</Link></li>
+                <li class="center"><Link to="/">Despierta tu curiosidad</Link></li>
+                <li class="center"><Link to="/nasa">Cosmos</Link></li>
                 <li class="center"><Link to="/nosotros">Nosotros</Link></li>
                 <li class="center"><Link to="/contactanos">Contáctanos</Link></li>
                 <li class="center"><Link to="/dashboard">Dashboard</Link></li>

@@ -5,7 +5,8 @@ import Star from './Astro1';
 import Picture from './Picture';
 import ISSLocation from './Iss';
 import SpaceX from './Space_X1';
-
+import Header from '../Componentes/Header.js';
+import Footer from '../Componentes/Footer.js';
 
 const MarsRoverPhotos = () => {
     const [photos, setPhotos] = useState([]);
@@ -43,6 +44,8 @@ const MarsRoverPhotos = () => {
 
     return (
         <>
+
+        <Header/>
             <h1>Galeria de imagenes de Marte(api_1)</h1>
             <div className="container">
                 <div className="buttons">
@@ -82,6 +85,7 @@ const MarsRoverPhotos = () => {
                 <h1>Space_X Information</h1>
                 <SpaceX></SpaceX>
             </div>
+            <Footer/>
         </>
     );
 };
