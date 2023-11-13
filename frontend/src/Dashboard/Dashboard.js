@@ -3,8 +3,68 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import Header from '../Componentes/Header';
 import Footer from '../Componentes/Footer';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function Dashboard() {
+    const [users, setUsers] = useState([]);
+    const [newUser, setNewUser] = useState({ username: '', password: '' });
+    const [editingUser, setEditingUser] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);
+
+    const fetchUsers = async () => {
+        try {
+            const response = await axios.get('http://localhost:4000/users');
+            setUsers(response.data);
+        } catch (error) {
+            console.error('Error fetching users:', error);
+        }
+    };
+
+    const handleAddUser = async () => {
+        try {
+            await axios.post('http://localhost:4000/users', newUser);
+            alert('Usuario agregado correctamente');
+            fetchUsers();
+        } catch (error) {
+            alert('Error al agregar usuario');
+        }
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:4000/users/${id}`);
+            alert('Usuario eliminado correctamente');
+            fetchUsers();
+        } catch (error) {
+            alert('Error al eliminar usuario');
+        }
+    };
+
+    const handleEdit = (user) => {
+        setEditingUser(user);
+        setNewUser({ username: user.username, password: user.password });
+        setIsEditing(true);
+    };
+
+    const handleUpdateUser = async () => {
+        try {
+            await axios.patch(`http://localhost:4000/users/${editingUser.id}`, newUser);
+            alert('Usuario actualizado correctamente');
+            fetchUsers();
+            setEditingUser(null);
+            setIsEditing(false);
+            setNewUser({ username: '', password: '' });
+        } catch (error) {
+            alert('Error al actualizar usuario');
+        }
+    };
+
+
+    useEffect(() => {
+        fetchUsers();
+    }, []);
+
     return (
         <>
             <body className='body-dashboard'>
@@ -18,6 +78,24 @@ function Dashboard() {
                                 <h1>Connect</h1>
                             </div>
                         </div>
+                        <div className='container-menu-dashboard'>
+                            <div className='menu-section'>
+                            <Link to="/dashboard"><svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></Link>
+                                <p className='p-left'><Link to="/dashboard" className='link-dashboard'>Inicio</Link></p>
+                            </div>
+                            <div className='menu-section'>
+                                <svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" /><circle cx="12" cy="10" r="3" /><circle cx="12" cy="12" r="10" /></svg>
+                                <p className='p-left'>Usuarios</p>
+                            </div>
+                            <div className='menu-section'>
+                            <svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg>
+                                <p className='p-left'>Test</p>
+                            </div>
+                            <div className='menu-section'>
+                            <svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg>
+                                <p className='p-left'>Test</p>
+                            </div>
+                        </div>
                     </aside>
 
                     <div className='prueba'>
@@ -27,6 +105,60 @@ function Dashboard() {
                                     <div>
                                         <h1 className='h1-dashboard'>¡Bienvenido usuario!</h1>
                                         <p className='p-left'>Tu panel de control central: Datos importantes, a un vistazo</p>
+
+                                        <div className="dashboard">
+                                            <div className="content">
+                                                <h1>Bienvenido al Dashboard</h1>
+                                                <div className="user-form">
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Nombre de usuario"
+                                                        value={newUser.username}
+                                                        onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+                                                    />
+                                                    <input
+                                                        type="password"
+                                                        placeholder="Contraseña"
+                                                        value={newUser.password}
+                                                        onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+                                                    />
+                                                    {isEditing ? (
+                                                        <button onClick={handleUpdateUser}>Guardar Cambios</button>
+                                                    ) : (
+                                                        <button onClick={handleAddUser}>Agregar Usuario</button>
+                                                    )}
+                                                </div>
+
+                                                <table className="user-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Usuario</th>
+                                                            <th>Password</th>
+                                                            <th>Fecha de creación</th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {users.map((user) => (
+                                                            <tr key={user.id}>
+                                                                <td>{user.username}</td>
+                                                                <td>{user.password}</td>
+                                                                <td>{user.createdAT}</td>
+                                                                <td>
+                                                                    <button className="edit-button" onClick={() => handleEdit(user)}>
+                                                                        Editar
+                                                                    </button>
+                                                                    <button className="delete-button" onClick={() => handleDelete(user.id)}>
+                                                                        Eliminar
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div className='container-btn-home-dashboard'>
                                         <Link to="/login"><button type="submit" className="btn-login">

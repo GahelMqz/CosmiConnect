@@ -39,27 +39,21 @@ function Login_G() {
 
     return (
         <>
-            
-            <body>
-                <div>
-                    <br />
-                    <br />
-                    {loggedIn ? (
-                        <div>
-                            <img src={profile.picture} alt="user image" />
-                            <h3>User Logged in</h3>
-                            <p>Name: {profile.name}</p>
-                            <p>Email Address: {profile.email}</p>
-                            <br />
-                            <br />
-                            <button onClick={logOut}>Log out</button>
-                        </div>
-                    ) : (
-                        <button onClick={() => login()}>Sign in with Google 🚀 </button>
-                    )}
-                </div>
-            </body>
-           
+            <div>
+                {loggedIn ? (
+                    <div>
+                        <img src={profile.picture} alt="user image" />
+                        <h3>User Logged in</h3>
+                        <p>Name: {profile.name}</p>
+                        <p>Email Address: {profile.email}</p>
+                        <br />
+                        <br />
+                        <button onClick={logOut}>Cerrar sesión</button>
+                    </div>
+                ) : (
+                    <button onClick={() => login()}>Google 🚀 </button>
+                )}
+            </div>
         </>
     );
 }

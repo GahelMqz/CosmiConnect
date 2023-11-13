@@ -47,3 +47,22 @@ aside {
     background: yellow;
     
 }
+
+.container-menu-dashboard{
+    margin: 30px 0;
+}
+
+.menu-section{
+    display: flex;
+    padding-left: 15%;
+    margin: 15px 0;
+}
+
+.svg-icons{
+    margin-right: 30px;
+}
+
+.link-dashboard{
+    text-decoration: none;
+    color: #C874B2;
+}
