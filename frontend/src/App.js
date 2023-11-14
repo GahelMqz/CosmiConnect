@@ -17,6 +17,7 @@ import SkyObjects from './Apis/Sky';
 import Nasa from './Apis/Nasa';
 import SpaceX from './Apis/Space_X1';
 import SpaceXData from './Apis/Space_X';
+import Dashboard_usuarios from './Dashboard/Dashboard_usuarios';
 
 
 
@@ -31,6 +32,7 @@ function App() {
         <Route path='/contactanos' element={<Contactanos />}></Route>
         <Route path='/horoscopo' element={<Horoscopo />}></Route>
         <Route path='/dashboard' element={<Dashboard />}></Route>
+        <Route path='/dashboard/usuarios' element={<Dashboard_usuarios />}></Route>
         <Route path='/space' element={<SpaceXData />}></Route>
         <Route path='/space' element={<SpaceXData />}></Route>
         <Route path='/picture' element={<Picture />}></Route>

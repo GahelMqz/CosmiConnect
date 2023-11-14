@@ -6,7 +6,65 @@ import Footer from '../Componentes/Footer';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Dashboard() {
+function Dashboard_usuarios() {
+    const [users, setUsers] = useState([]);
+    const [newUser, setNewUser] = useState({ username: '', password: '' });
+    const [editingUser, setEditingUser] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);
+
+    const fetchUsers = async () => {
+        try {
+            const response = await axios.get('http://localhost:4000/users');
+            setUsers(response.data);
+        } catch (error) {
+            console.error('Error fetching users:', error);
+        }
+    };
+
+    const handleAddUser = async () => {
+        try {
+            await axios.post('http://localhost:4000/users', newUser);
+            alert('Usuario agregado correctamente');
+            fetchUsers();
+        } catch (error) {
+            alert('Error al agregar usuario');
+        }
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:4000/users/${id}`);
+            alert('Usuario eliminado correctamente');
+            fetchUsers();
+        } catch (error) {
+            alert('Error al eliminar usuario');
+        }
+    };
+
+    const handleEdit = (user) => {
+        setEditingUser(user);
+        setNewUser({ username: user.username, password: user.password });
+        setIsEditing(true);
+    };
+
+    const handleUpdateUser = async () => {
+        try {
+            await axios.patch(`http://localhost:4000/users/${editingUser.id}`, newUser);
+            alert('Usuario actualizado correctamente');
+            fetchUsers();
+            setEditingUser(null);
+            setIsEditing(false);
+            setNewUser({ username: '', password: '' });
+        } catch (error) {
+            alert('Error al actualizar usuario');
+        }
+    };
+
+
+    useEffect(() => {
+        fetchUsers();
+    }, []);
+
     return (
         <>
             <body className='body-dashboard'>
@@ -69,16 +127,61 @@ function Dashboard() {
 
                         <div class="section-two-dashboard">
                             <div className='section-sub-two'>
-                                <img className='img-one-home' src={require("../imgs/horoscopo.png")} alt="Horóscopo" />
-                                <div className='section-mini-two'>
-                                    <h1>¡Descubre el Universo en CosmiConnect!</h1>
-                                    <p className='p-right'>Descubre el espacio como nunca antes. Horóscopos, planetas, estrellas y satélites, todo en un solo lugar. Únete a nosotros y despierta tu pasión por el universo.</p>
-                                    <div className='container-btn-home'>
-                                        <Link to="/login"><button type="submit" className="btn-login">
-                                            ¡Comienza ahora!
-                                        </button>
-                                        </Link>
+
+                                <div className='section-mini-two-dashboard-usuarios'>
+
+                                    <div className="dashboard-usuarios">
+                                        <div className="content">
+                                            <div className="user-form">
+                                                <input
+                                                    type="text"
+                                                    placeholder="Nombre de usuario"
+                                                    value={newUser.username}
+                                                    onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+                                                />
+                                                <input
+                                                    type="password"
+                                                    placeholder="Contraseña"
+                                                    value={newUser.password}
+                                                    onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+                                                />
+                                                {isEditing ? (
+                                                    <button onClick={handleUpdateUser}>Guardar Cambios</button>
+                                                ) : (
+                                                    <button onClick={handleAddUser}>Agregar Usuario</button>
+                                                )}
+                                            </div>
+
+                                            <table className="user-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Usuario</th>
+                                                        <th>Password</th>
+                                                        <th>Fecha de creación</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {users.map((user) => (
+                                                        <tr key={user.id}>
+                                                            <td>{user.username}</td>
+                                                            <td>{user.password}</td>
+                                                            <td>{user.createdAT}</td>
+                                                            <td>
+                                                                <button className="edit-button" onClick={() => handleEdit(user)}>
+                                                                    Editar
+                                                                </button>
+                                                                <button className="delete-button" onClick={() => handleDelete(user.id)}>
+                                                                    Eliminar
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -96,4 +199,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard;
+export default Dashboard_usuarios;
