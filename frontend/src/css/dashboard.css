@@ -79,41 +79,136 @@ aside {
   padding: 40px;
   border-radius: 10px;
   text-align: center;
-  background-color: #C874B2;
+  /*background-color: #C874B2;*/
   font-size: 20px;
 }
 
-.user-form {
-  margin-bottom: 20px;
+.section-mini-two-dashboard-usuarios {
+  padding-left: 3%;
 }
 
-.user-form input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+
+
+
+.btn-dashboard-usuarios-agregar {
+  width: 25vh;
+  height: 45px;
+  background: #D5F5DE;
   border: none;
+  outline: none;
   border-radius: 40px;
-  background-color: #F5D5E0;
-}
-
-.user-form input::placeholder {
-  color: #C874B2;
-}
-
-.user-form button {
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
+  color: #075233;
+  font-weight: 600;
 }
 
-.user-form button:hover {
-  background-color: #45a049;
+.btn-dashboard-usuarios-agregar:hover {
+  color: #D5F5DE;
+  background-color: #075233;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
 }
+
+.btn-dashboard-usuarios-agregar:not(hover) {
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+.btn-dashboard-usuarios-guardar {
+  width: 25vh;
+  height: 45px;
+  background: #D5E0F5;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #071952;
+  font-weight: 600;
+}
+
+.btn-dashboard-usuarios-guardar:hover {
+  color: #D5E0F5;
+  background-color: #071952;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+.btn-dashboard-usuarios-guardar:not(hover) {
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+.btn-dashboard-usuarios-editar {
+  width: 25vh;
+  height: 45px;
+  background: #F5E8D5;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #C08635;
+  font-weight: 600;
+}
+
+.btn-dashboard-usuarios-editar:hover {
+  color: #F5E8D5;
+  background-color: #C08635;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+.btn-dashboard-usuarios-editar:not(hover) {
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+.btn-dashboard-usuarios-eliminar {
+  width: 25vh;
+  height: 45px;
+  background: #F5D5D5;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #4B0D0D;
+  font-weight: 600;
+}
+
+.btn-dashboard-usuarios-eliminar:hover {
+  color: #F5D5D5;
+  background-color: #4B0D0D;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+.btn-dashboard-usuarios-eliminar:not(hover) {
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+
+
+
+
+
+.input-box-contactanos {
+  
+  margin: 30px 0;
+}
+
+
+
+
+
+
 
 .user-table {
   width: 100%;
@@ -163,6 +258,3 @@ aside {
   background-color: #ffc300;
 }
 
-.section-mini-two-dashboard-usuarios {
-  padding-left: 12%;
-}

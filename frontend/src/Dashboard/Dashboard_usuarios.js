@@ -1,14 +1,12 @@
 import '../css/dashboard.css'
 import React from "react";
 import { Link } from 'react-router-dom';
-import Header from '../Componentes/Header';
-import Footer from '../Componentes/Footer';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Dashboard_usuarios() {
     const [users, setUsers] = useState([]);
-    const [newUser, setNewUser] = useState({ username: '', password: '' });
+    const [newUser, setNewUser] = useState({ username: '', gmail: '', password: '', type: '' });
     const [editingUser, setEditingUser] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
 
@@ -54,7 +52,7 @@ function Dashboard_usuarios() {
             fetchUsers();
             setEditingUser(null);
             setIsEditing(false);
-            setNewUser({ username: '', password: '' });
+            setNewUser({ username: '', gmail: '', password: '', type: '' });
         } catch (error) {
             alert('Error al actualizar usuario');
         }
@@ -133,22 +131,47 @@ function Dashboard_usuarios() {
                                     <div className="dashboard-usuarios">
                                         <div className="content">
                                             <div className="user-form">
-                                                <input
-                                                    type="text"
-                                                    placeholder="Nombre de usuario"
-                                                    value={newUser.username}
-                                                    onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
-                                                />
-                                                <input
-                                                    type="password"
-                                                    placeholder="Contraseña"
-                                                    value={newUser.password}
-                                                    onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
-                                                />
+
+                                                <div className='input-box-contactanos'>
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Nombre de usuario"
+                                                        value={newUser.username}
+                                                        onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+                                                    />
+                                                </div>
+
+                                                <div className='input-box-contactanos'>
+                                                    <input
+                                                        type="email"
+                                                        placeholder="Correo electrónico"
+                                                        value={newUser.gmail}
+                                                        onChange={(e) => setNewUser({ ...newUser, gmail: e.target.value })}
+                                                    />
+                                                </div>
+
+                                                <div className='input-box-contactanos'>
+                                                    <input
+                                                        type="password"
+                                                        placeholder="Contraseña"
+                                                        value={newUser.password}
+                                                        onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+                                                    />
+                                                </div>
+
+                                                <div className='input-box-contactanos'>
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Tipo"
+                                                        value={newUser.type}
+                                                        onChange={(e) => setNewUser({ ...newUser, type: e.target.value })}
+                                                    />
+                                                </div>
+
                                                 {isEditing ? (
-                                                    <button onClick={handleUpdateUser}>Guardar Cambios</button>
+                                                    <button className='btn-dashboard-usuarios-guardar' onClick={handleUpdateUser}>Guardar cambios</button>
                                                 ) : (
-                                                    <button onClick={handleAddUser}>Agregar Usuario</button>
+                                                    <button className='btn-dashboard-usuarios-agregar' onClick={handleAddUser}>Agregar usuario</button>
                                                 )}
                                             </div>
 
@@ -156,7 +179,9 @@ function Dashboard_usuarios() {
                                                 <thead>
                                                     <tr>
                                                         <th>Usuario</th>
+                                                        <th>Gmail</th>
                                                         <th>Password</th>
+                                                        <th>Tipo</th>
                                                         <th>Fecha de creación</th>
                                                         <th>Acciones</th>
                                                     </tr>
@@ -165,13 +190,15 @@ function Dashboard_usuarios() {
                                                     {users.map((user) => (
                                                         <tr key={user.id}>
                                                             <td>{user.username}</td>
+                                                            <td>{user.gmail}</td>
                                                             <td>{user.password}</td>
+                                                            <td>{user.type}</td>
                                                             <td>{user.createdAT}</td>
                                                             <td>
-                                                                <button className="edit-button" onClick={() => handleEdit(user)}>
+                                                                <button className="btn-dashboard-usuarios-editar" onClick={() => handleEdit(user)}>
                                                                     Editar
                                                                 </button>
-                                                                <button className="delete-button" onClick={() => handleDelete(user.id)}>
+                                                                <button className="btn-dashboard-usuarios-eliminar" onClick={() => handleDelete(user.id)}>
                                                                     Eliminar
                                                                 </button>
                                                             </td>
