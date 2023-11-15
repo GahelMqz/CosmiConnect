@@ -126,89 +126,87 @@ function Dashboard_usuarios() {
                         <div class="section-two-dashboard">
                             <div className='section-sub-two'>
 
-                                <div className='section-mini-two-dashboard-usuarios'>
+                                <div className="dashboard-usuarios">
+                                    <div className="content">
+                                        <div className="user-form">
 
-                                    <div className="dashboard-usuarios">
-                                        <div className="content">
-                                            <div className="user-form">
-
-                                                <div className='input-box-contactanos'>
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Nombre de usuario"
-                                                        value={newUser.username}
-                                                        onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
-                                                    />
-                                                </div>
-
-                                                <div className='input-box-contactanos'>
-                                                    <input
-                                                        type="email"
-                                                        placeholder="Correo electrónico"
-                                                        value={newUser.gmail}
-                                                        onChange={(e) => setNewUser({ ...newUser, gmail: e.target.value })}
-                                                    />
-                                                </div>
-
-                                                <div className='input-box-contactanos'>
-                                                    <input
-                                                        type="password"
-                                                        placeholder="Contraseña"
-                                                        value={newUser.password}
-                                                        onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
-                                                    />
-                                                </div>
-
-                                                <div className='input-box-contactanos'>
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Tipo"
-                                                        value={newUser.type}
-                                                        onChange={(e) => setNewUser({ ...newUser, type: e.target.value })}
-                                                    />
-                                                </div>
-
-                                                {isEditing ? (
-                                                    <button className='btn-dashboard-usuarios-guardar' onClick={handleUpdateUser}>Guardar cambios</button>
-                                                ) : (
-                                                    <button className='btn-dashboard-usuarios-agregar' onClick={handleAddUser}>Agregar usuario</button>
-                                                )}
+                                            <div className='input-box-dashboard'>
+                                                <input
+                                                    type="text"
+                                                    placeholder="Nombre de usuario"
+                                                    value={newUser.username}
+                                                    onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+                                                />
                                             </div>
 
-                                            <table className="user-table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Usuario</th>
-                                                        <th>Gmail</th>
-                                                        <th>Password</th>
-                                                        <th>Tipo</th>
-                                                        <th>Fecha de creación</th>
-                                                        <th>Acciones</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {users.map((user) => (
-                                                        <tr key={user.id}>
-                                                            <td>{user.username}</td>
-                                                            <td>{user.gmail}</td>
-                                                            <td>{user.password}</td>
-                                                            <td>{user.type}</td>
-                                                            <td>{user.createdAT}</td>
-                                                            <td>
-                                                                <button className="btn-dashboard-usuarios-editar" onClick={() => handleEdit(user)}>
-                                                                    Editar
-                                                                </button>
-                                                                <button className="btn-dashboard-usuarios-eliminar" onClick={() => handleDelete(user.id)}>
-                                                                    Eliminar
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    ))}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                                            <div className='input-box-dashboard'>
+                                                <input
+                                                    type="email"
+                                                    placeholder="Correo electrónico"
+                                                    value={newUser.gmail}
+                                                    onChange={(e) => setNewUser({ ...newUser, gmail: e.target.value })}
+                                                />
+                                            </div>
 
+                                            <div className='input-box-dashboard'>
+                                                <input
+                                                    type="password"
+                                                    placeholder="Contraseña"
+                                                    value={newUser.password}
+                                                    onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+                                                />
+                                            </div>
+
+                                            <div className='input-box-dashboard'>
+                                                <select
+                                                    value={newUser.type}
+                                                    onChange={(e) => setNewUser({ ...newUser, type: e.target.value })}
+                                                >
+                                                    <option value="client">Cliente</option>
+                                                    <option value="admin">Admin</option>
+                                                </select>
+                                            </div>
+
+
+                                            {isEditing ? (
+                                                <button className='btn-dashboard-usuarios-guardar' onClick={handleUpdateUser}>Guardar cambios</button>
+                                            ) : (
+                                                <button className='btn-dashboard-usuarios-agregar' onClick={handleAddUser}>Agregar usuario</button>
+                                            )}
+                                        </div>
+
+                                        <table className="user-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Usuario</th>
+                                                    <th>Gmail</th>
+                                                    <th>Password</th>
+                                                    <th>Tipo</th>
+                                                    <th>Fecha de creación</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {users.map((user) => (
+                                                    <tr key={user.id}>
+                                                        <td>{user.username}</td>
+                                                        <td>{user.gmail}</td>
+                                                        <td>{user.password}</td>
+                                                        <td>{user.type}</td>
+                                                        <td>{user.createdAT}</td>
+                                                        <td>
+                                                            <button className="btn-dashboard-usuarios-editar" onClick={() => handleEdit(user)}>
+                                                                Editar
+                                                            </button>
+                                                            <button className="btn-dashboard-usuarios-eliminar" onClick={() => handleDelete(user.id)}>
+                                                                Eliminar
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
