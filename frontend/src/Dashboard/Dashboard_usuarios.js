@@ -7,7 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 function Dashboard_usuarios() {
     const [users, setUsers] = useState([]);
-    const [newUser, setNewUser] = useState({ username: '', gmail: '', password: '', type: '' });
+    const [newUser, setNewUser] = useState({ username: '', gmail: '', password: '', type: 'client' });
     const [editingUser, setEditingUser] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
@@ -22,6 +22,54 @@ function Dashboard_usuarios() {
     };
 
     const handleAddUser = async () => {
+        // Verifica si los campos están completos
+        if (!newUser.username) {
+            toast.error('Falta completar el campo de nombre', {
+                style: {
+                    background: '#c87474',
+                    color: '#4B0D0D',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#4B0D0D',
+                    secondary: '#c87474',
+                },
+            });
+            return;
+        }
+        if (!newUser.gmail) {
+            toast.error('Falta completar el campo de correo electrónico', {
+                style: {
+                    background: '#c87474',
+                    color: '#4B0D0D',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#4B0D0D',
+                    secondary: '#c87474',
+                },
+            });
+            return;
+        }
+        if (!newUser.password) {
+            toast.error('Falta completar el campo de contraseña', {
+                style: {
+                    background: '#c87474',
+                    color: '#4B0D0D',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#4B0D0D',
+                    secondary: '#c87474',
+                },
+            });
+            return;
+        }
+
+        // Si todos los campos están completos, procede con la solicitud
         try {
             await axios.post('http://localhost:4000/users', newUser);
             fetchUsers();
@@ -53,32 +101,77 @@ function Dashboard_usuarios() {
         }
     };
 
+
     const handleDelete = async (id) => {
         try {
             await axios.delete(`http://localhost:4000/users/${id}`);
-            alert('Usuario eliminado correctamente');
             fetchUsers();
+            toast.success('Usuario eliminado', {
+                style: {
+                    background: '#74C88A',
+                    color: '#075233',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#075233',
+                    secondary: '#74C88A',
+                },
+            });
         } catch (error) {
-            alert('Error al eliminar usuario');
+            toast.error('Error al eliminar usuario', {
+                style: {
+                    background: '#c87474',
+                    color: '#4B0D0D',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#4B0D0D',
+                    secondary: '#c87474',
+                },
+            });
         }
     };
 
     const handleEdit = (user) => {
         setEditingUser(user);
-        setNewUser({ username: user.username, password: user.password });
+        setNewUser({ username: user.username, password: user.password, type: user.type });
         setIsEditing(true);
     };
 
     const handleUpdateUser = async () => {
         try {
             await axios.patch(`http://localhost:4000/users/${editingUser.id}`, newUser);
-            alert('Usuario actualizado correctamente');
             fetchUsers();
             setEditingUser(null);
             setIsEditing(false);
             setNewUser({ username: '', gmail: '', password: '', type: '' });
+            toast.success('Usuario actulizado', {
+                style: {
+                    background: '#74C88A',
+                    color: '#075233',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#075233',
+                    secondary: '#74C88A',
+                },
+            });
         } catch (error) {
-            alert('Error al actualizar usuario');
+            toast.error('Error al actualizar usuario', {
+                style: {
+                    background: '#c87474',
+                    color: '#4B0D0D',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#4B0D0D',
+                    secondary: '#c87474',
+                },
+            });
         }
     };
 
