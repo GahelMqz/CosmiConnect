@@ -17,6 +17,8 @@ import SkyObjects from './Apis/Sky';
 import Nasa from './Apis/Nasa';
 import SpaceX from './Apis/Space_X1';
 import SpaceXData from './Apis/Space_X';
+import SubirPublicacion from './Dashboard/Subirpublicacion';
+import Dashboard_usuarios from './Dashboard/Dashboard_usuarios';
 
 
 
@@ -40,6 +42,8 @@ function App() {
         <Route path='/sky' element={<SkyObjects />}></Route>
         <Route path='/nasa' element={<Nasa />}></Route>
         <Route path='/space1' element={<SpaceX />}></Route>
+        <Route path='/publicacion' element={<SubirPublicacion />}></Route>
+        <Route path='/dashu' element={<Dashboard_usuarios />}></Route>
       </Routes>
     </BrowserRouter>
   );
