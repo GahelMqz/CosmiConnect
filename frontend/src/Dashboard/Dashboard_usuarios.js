@@ -10,6 +10,7 @@ function Dashboard_usuarios() {
     const [newUser, setNewUser] = useState({ username: '', gmail: '', password: '', type: '' });
     const [editingUser, setEditingUser] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
 
     const fetchUsers = async () => {
         try {
@@ -89,9 +90,9 @@ function Dashboard_usuarios() {
     return (
         <>
             <body className='body-dashboard'>
-            <Toaster 
-            position="top-right"
-            />
+                <Toaster
+                    position="top-right"
+                />
                 <div className='temp'>
                     <aside>
                         <div className='container-cabecera-dashboard'>
@@ -203,6 +204,15 @@ function Dashboard_usuarios() {
                                             )}
                                         </div>
 
+                                        <div className='input-box-dashboard'>
+                                            <input
+                                                type="text"
+                                                placeholder="Buscar usuario..."
+                                                value={searchTerm}
+                                                onChange={(e) => setSearchTerm(e.target.value)}
+                                            />
+                                        </div>
+
                                         <table className="user-table">
                                             <thead>
                                                 <tr>
@@ -215,7 +225,12 @@ function Dashboard_usuarios() {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {users.map((user) => (
+                                                {users.filter(user =>
+                                                    user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                                    user.gmail.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                                    user.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                                    user.createdAT.toLowerCase().includes(searchTerm.toLowerCase())
+                                                ).map((user) => (
                                                     <tr key={user.id}>
                                                         <td>{user.username}</td>
                                                         <td>{user.gmail}</td>
