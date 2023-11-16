@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Dashboard_usuarios() {
     const [users, setUsers] = useState([]);
@@ -22,10 +23,32 @@ function Dashboard_usuarios() {
     const handleAddUser = async () => {
         try {
             await axios.post('http://localhost:4000/users', newUser);
-            alert('Usuario agregado correctamente');
             fetchUsers();
+            toast.success('Registro exitoso', {
+                style: {
+                    background: '#74C88A',
+                    color: '#075233',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#075233',
+                    secondary: '#74C88A',
+                },
+            });
         } catch (error) {
-            alert('Error al agregar usuario');
+            toast.error('Error en el registro', {
+                style: {
+                    background: '#c87474',
+                    color: '#4B0D0D',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#4B0D0D',
+                    secondary: '#c87474',
+                },
+            });
         }
     };
 
@@ -66,7 +89,9 @@ function Dashboard_usuarios() {
     return (
         <>
             <body className='body-dashboard'>
-
+            <Toaster 
+            position="top-right"
+            />
                 <div className='temp'>
                     <aside>
                         <div className='container-cabecera-dashboard'>
@@ -136,6 +161,7 @@ function Dashboard_usuarios() {
                                                     placeholder="Nombre de usuario"
                                                     value={newUser.username}
                                                     onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+                                                    required
                                                 />
                                             </div>
 
@@ -145,6 +171,7 @@ function Dashboard_usuarios() {
                                                     placeholder="Correo electrónico"
                                                     value={newUser.gmail}
                                                     onChange={(e) => setNewUser({ ...newUser, gmail: e.target.value })}
+                                                    required
                                                 />
                                             </div>
 
@@ -154,6 +181,7 @@ function Dashboard_usuarios() {
                                                     placeholder="Contraseña"
                                                     value={newUser.password}
                                                     onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+                                                    required
                                                 />
                                             </div>
 
