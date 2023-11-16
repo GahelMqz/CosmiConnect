@@ -124,7 +124,7 @@ function Dashboard_usuarios() {
                         </div>
 
                         <div class="section-two-dashboard">
-                            <div className='section-sub-two'>
+                            <div className='section-sub-two-dashboard-usuarios'>
 
                                 <div className="dashboard-usuarios">
                                     <div className="content">
@@ -178,7 +178,7 @@ function Dashboard_usuarios() {
                                         <table className="user-table">
                                             <thead>
                                                 <tr>
-                                                    <th>Usuario</th>
+                                                    <th>Nombre</th>
                                                     <th>Gmail</th>
                                                     <th>Password</th>
                                                     <th>Tipo</th>
