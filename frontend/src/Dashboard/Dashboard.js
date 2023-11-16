@@ -5,6 +5,7 @@ import '../css/dashboard.css';
 
 
 function Dashboard() {
+<<<<<<< HEAD
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [users, setUsers] = useState([]);
@@ -78,6 +79,8 @@ function Dashboard() {
         setShowUserMenu(!showUserMenu);
     };
 
+=======
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
     return (
         <>
             <body className='body-dashboard'>
@@ -105,20 +108,37 @@ function Dashboard() {
                         </div>
                         <div className='container-menu-dashboard'>
                             <div className='menu-section'>
+<<<<<<< HEAD
                                 <Link to="/dashboard"><svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></Link>
+=======
+                                <Link to="/dashboard"><svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></Link>
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                                 <p className='p-left'><Link to="/dashboard" className='link-dashboard'>Inicio</Link></p>
                             </div>
                             <div className='menu-section'>
-                                <svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" /><circle cx="12" cy="10" r="3" /><circle cx="12" cy="12" r="10" /></svg>
-                                <p className='p-left'>Usuarios</p>
+                                <Link to="/dashboard/usuarios"><svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" /><circle cx="12" cy="10" r="3" /><circle cx="12" cy="12" r="10" /></svg></Link>
+                                <p className='p-left'><Link to="/dashboard/usuarios" className='link-dashboard'>Usuarios</Link></p>
                             </div>
                             <div className='menu-section'>
+<<<<<<< HEAD
                                 <svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg>
                                 <p className='p-left'>Test</p>
                             </div>
                             <div className='menu-section'>
                                 <svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg>
                                 <p className='p-left'>Test</p>
+=======
+                                <Link to="/dashboard/noticias"><svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" /><path d="M14 3v5h5M16 13H8M16 17H8M10 9H8" /></svg></Link>
+                                <p className='p-left'><Link to="/dashboard/noticias" className='link-dashboard'>Noticias</Link></p>
+                            </div>
+                            <div className='menu-section'>
+                                <Link to="/dashboard/estrellas"><svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg></Link>
+                                <p className='p-left'><Link to="/dashboard/estrellas" className='link-dashboard'>Estrellas</Link></p>
+                            </div>
+                            <div className='menu-section'>
+                                <Link to="/dashboard/imagenes"><svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="M20.4 14.5L16 10 4 20" /></svg></Link>
+                                <p className='p-left'><Link to="/dashboard/imagenes" className='link-dashboard'>Imágenes</Link></p>
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                             </div>
                         </div>
                     </aside>
@@ -130,60 +150,6 @@ function Dashboard() {
                                     <div>
                                         <h1 className='h1-dashboard'>¡Bienvenido usuario!</h1>
                                         <p className='p-left'>Tu panel de control central: Datos importantes, a un vistazo</p>
-
-                                        <div className="dashboard">
-                                            <div className="content">
-                                                <h1>Bienvenido al Dashboard</h1>
-                                                <div className="user-form">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Nombre de usuario"
-                                                        value={newUser.username}
-                                                        onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
-                                                    />
-                                                    <input
-                                                        type="password"
-                                                        placeholder="Contraseña"
-                                                        value={newUser.password}
-                                                        onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
-                                                    />
-                                                    {isEditing ? (
-                                                        <button onClick={handleUpdateUser}>Guardar Cambios</button>
-                                                    ) : (
-                                                        <button onClick={handleAddUser}>Agregar Usuario</button>
-                                                    )}
-                                                </div>
-
-                                                <table className="user-table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Usuario</th>
-                                                            <th>Password</th>
-                                                            <th>Fecha de creación</th>
-                                                            <th>Acciones</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {users.map((user) => (
-                                                            <tr key={user.id}>
-                                                                <td>{user.username}</td>
-                                                                <td>{user.password}</td>
-                                                                <td>{user.createdAT}</td>
-                                                                <td>
-                                                                    <button className="edit-button" onClick={() => handleEdit(user)}>
-                                                                        Editar
-                                                                    </button>
-                                                                    <button className="delete-button" onClick={() => handleDelete(user.id)}>
-                                                                        Eliminar
-                                                                    </button>
-                                                                </td>
-                                                            </tr>
-                                                        ))}
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-
                                     </div>
                                     <div className='container-btn-home-dashboard'>
                                         <Link to="/login"><button type="submit" className="btn-login">

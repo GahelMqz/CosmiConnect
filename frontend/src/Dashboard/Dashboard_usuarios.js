@@ -1,27 +1,46 @@
+<<<<<<< HEAD
 import '../css/dashboard.css';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+=======
+import '../css/dashboard.css'
+import React from "react";
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 
 function Dashboard_usuarios() {
     const [users, setUsers] = useState([]);
+<<<<<<< HEAD
     const [newUser, setNewUser] = useState({ nombre: '', email: '', contrasena: '', tipo: 'client' });
+=======
+    const [newUser, setNewUser] = useState({ username: '', gmail: '', password: '', type: 'client' });
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
     const [editingUser, setEditingUser] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
 
     const fetchUsers = async () => {
         try {
+<<<<<<< HEAD
             const response = await axios.get('http://localhost:8081/usuarios');
             setUsers(response.data);
         } catch (error) {
             console.error('Error fetching users:', error);
             toast.error('Error al cargar los usuarios');
+=======
+            const response = await axios.get('http://localhost:4000/users');
+            setUsers(response.data);
+        } catch (error) {
+            console.error('Error fetching users:', error);
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
         }
     };
 
     const handleAddUser = async () => {
+<<<<<<< HEAD
         
         if (!newUser.nombre || !newUser.email || !newUser.contrasena) {
             toast.error('Por favor, completa todos los campos');
@@ -50,16 +69,132 @@ function Dashboard_usuarios() {
             toast.success('Usuario eliminado con éxito');
         } catch (error) {
             toast.error('Error al eliminar usuario');
+=======
+        // Verifica si los campos están completos
+        if (!newUser.username) {
+            toast.error('Falta completar el campo de nombre', {
+                style: {
+                    background: '#c87474',
+                    color: '#4B0D0D',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#4B0D0D',
+                    secondary: '#c87474',
+                },
+            });
+            return;
+        }
+        if (!newUser.gmail) {
+            toast.error('Falta completar el campo de correo electrónico', {
+                style: {
+                    background: '#c87474',
+                    color: '#4B0D0D',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#4B0D0D',
+                    secondary: '#c87474',
+                },
+            });
+            return;
+        }
+        if (!newUser.password) {
+            toast.error('Falta completar el campo de contraseña', {
+                style: {
+                    background: '#c87474',
+                    color: '#4B0D0D',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#4B0D0D',
+                    secondary: '#c87474',
+                },
+            });
+            return;
+        }
+
+        // Si todos los campos están completos, procede con la solicitud
+        try {
+            await axios.post('http://localhost:4000/users', newUser);
+            fetchUsers();
+            toast.success('Registro exitoso', {
+                style: {
+                    background: '#74C88A',
+                    color: '#075233',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#075233',
+                    secondary: '#74C88A',
+                },
+            });
+        } catch (error) {
+            toast.error('Error en el registro', {
+                style: {
+                    background: '#c87474',
+                    color: '#4B0D0D',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#4B0D0D',
+                    secondary: '#c87474',
+                },
+            });
+        }
+    };
+
+
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:4000/users/${id}`);
+            fetchUsers();
+            toast.success('Usuario eliminado', {
+                style: {
+                    background: '#74C88A',
+                    color: '#075233',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#075233',
+                    secondary: '#74C88A',
+                },
+            });
+        } catch (error) {
+            toast.error('Error al eliminar usuario', {
+                style: {
+                    background: '#c87474',
+                    color: '#4B0D0D',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#4B0D0D',
+                    secondary: '#c87474',
+                },
+            });
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
         }
     };
 
     const handleEdit = (user) => {
         setEditingUser(user);
+<<<<<<< HEAD
         setNewUser({ nombre: user.nombre, email: user.email, contrasena: '', tipo: user.tipo });
+=======
+        setNewUser({ username: user.username, password: user.password, type: user.type });
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
         setIsEditing(true);
     };
 
     const handleUpdateUser = async () => {
+<<<<<<< HEAD
         if (!newUser.nombre || !newUser.email || !newUser.contrasena) {
             toast.error('Por favor, completa todos los campos');
             return;
@@ -83,6 +218,43 @@ function Dashboard_usuarios() {
         }
     };
 
+=======
+        try {
+            await axios.patch(`http://localhost:4000/users/${editingUser.id}`, newUser);
+            fetchUsers();
+            setEditingUser(null);
+            setIsEditing(false);
+            setNewUser({ username: '', gmail: '', password: '', type: '' });
+            toast.success('Usuario actulizado', {
+                style: {
+                    background: '#74C88A',
+                    color: '#075233',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#075233',
+                    secondary: '#74C88A',
+                },
+            });
+        } catch (error) {
+            toast.error('Error al actualizar usuario', {
+                style: {
+                    background: '#c87474',
+                    color: '#4B0D0D',
+                    borderRadius: '40px',
+                    fontSize: '30px'
+                },
+                iconTheme: {
+                    primary: '#4B0D0D',
+                    secondary: '#c87474',
+                },
+            });
+        }
+    };
+
+
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
     useEffect(() => {
         fetchUsers();
     }, []);
@@ -160,8 +332,13 @@ function Dashboard_usuarios() {
                                                 <input
                                                     type="text"
                                                     placeholder="Nombre de usuario"
+<<<<<<< HEAD
                                                     value={newUser.nombre}
                                                     onChange={(e) => setNewUser({ ...newUser, nombre: e.target.value })}
+=======
+                                                    value={newUser.username}
+                                                    onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                                                     required
                                                 />
                                             </div>
@@ -170,8 +347,13 @@ function Dashboard_usuarios() {
                                                 <input
                                                     type="email"
                                                     placeholder="Correo electrónico"
+<<<<<<< HEAD
                                                     value={newUser.email}
                                                     onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+=======
+                                                    value={newUser.gmail}
+                                                    onChange={(e) => setNewUser({ ...newUser, gmail: e.target.value })}
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                                                     required
                                                 />
                                             </div>
@@ -180,16 +362,26 @@ function Dashboard_usuarios() {
                                                 <input
                                                     type="password"
                                                     placeholder="Contraseña"
+<<<<<<< HEAD
                                                     value={newUser.contrasena}
                                                     onChange={(e) => setNewUser({ ...newUser, contrasena: e.target.value })}
+=======
+                                                    value={newUser.password}
+                                                    onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                                                     required
                                                 />
                                             </div>
 
                                             <div className='input-box-dashboard'>
                                                 <select
+<<<<<<< HEAD
                                                     value={newUser.tipo}
                                                     onChange={(e) => setNewUser({ ...newUser, tipo: e.target.value })}
+=======
+                                                    value={newUser.type}
+                                                    onChange={(e) => setNewUser({ ...newUser, type: e.target.value })}
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                                                 >
                                                     <option value="client">Cliente</option>
                                                     <option value="admin">Admin</option>
@@ -226,6 +418,7 @@ function Dashboard_usuarios() {
                                             </thead>
                                             <tbody>
                                                 {users.filter(user =>
+<<<<<<< HEAD
                                                     (user.nombre && user.nombre.toLowerCase().includes(searchTerm.toLowerCase())) ||
                                                     (user.email && user.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
                                                     (user.tipo && user.tipo.toLowerCase().includes(searchTerm.toLowerCase())) ||
@@ -236,6 +429,18 @@ function Dashboard_usuarios() {
                                                         <td>{user.email}</td>
                                                         <td>{user.contrasena}</td>
                                                         <td>{user.tipo}</td>
+=======
+                                                    user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                                    user.gmail.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                                    user.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                                    user.createdAT.toLowerCase().includes(searchTerm.toLowerCase())
+                                                ).map((user) => (
+                                                    <tr key={user.id}>
+                                                        <td>{user.username}</td>
+                                                        <td>{user.gmail}</td>
+                                                        <td>{user.password}</td>
+                                                        <td>{user.type}</td>
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                                                         <td>{user.createdAT}</td>
                                                         <td>
                                                             <button className="btn-dashboard-usuarios-editar" onClick={() => handleEdit(user)}>
