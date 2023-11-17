@@ -1,17 +1,103 @@
-import '../css/dashboard.css'
-import React from "react";
-import { Link } from 'react-router-dom';
-import Header from '../Componentes/Header';
-import Footer from '../Componentes/Footer';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import '../css/dashboard.css';
+
 
 function Dashboard() {
+<<<<<<< HEAD
+    const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+    const [users, setUsers] = useState([]);
+    const [showUserMenu, setShowUserMenu] = useState(false);
+    const [newUser, setNewUser] = useState({ username: '', password: '' });
+    const [editingUser, setEditingUser] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        } else {
+            navigate('/login'); // Redirigir al login si no hay usuario
+        }
+        fetchUsers();
+    }, [navigate]);
+
+    const fetchUsers = async () => {
+        try {
+            const response = await axios.get('http://localhost:4000/users');
+            setUsers(response.data);
+        } catch (error) {
+            console.error('Error fetching users:', error);
+        }
+    };
+
+    const handleAddUser = async () => {
+        try {
+            await axios.post('http://localhost:4000/users', newUser);
+            setNewUser({ username: '', password: '' });
+            fetchUsers();
+        } catch (error) {
+            console.error('Error al agregar usuario:', error);
+        }
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:4000/users/${id}`);
+            fetchUsers();
+        } catch (error) {
+            console.error('Error al eliminar usuario:', error);
+        }
+    };
+
+    const handleEdit = (user) => {
+        setEditingUser(user);
+        setNewUser({ username: user.username, password: user.password });
+        setIsEditing(true);
+    };
+
+    const handleUpdateUser = async () => {
+        try {
+            await axios.patch(`http://localhost:4000/users/${editingUser.id}`, newUser);
+            setEditingUser(null);
+            setIsEditing(false);
+            setNewUser({ username: '', password: '' });
+            fetchUsers();
+        } catch (error) {
+            console.error('Error al actualizar usuario:', error);
+        }
+    };
+
+    const logOut = () => {
+        localStorage.removeItem('user'); // Eliminar usuario del localStorage
+        navigate('/login'); // Redirigir al login
+    };
+
+    const toggleUserMenu = () => {
+        setShowUserMenu(!showUserMenu);
+    };
+
+=======
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
     return (
         <>
             <body className='body-dashboard'>
 
+                {user && (
+                    <div className="user-info" onClick={toggleUserMenu} style={{ position: 'absolute', top: 0, right: 0 }}>
+                        <img src={user.picture} alt={user.name} style={{ cursor: 'pointer' }} />
+                        {showUserMenu && (
+                            <div className="user-menu">
+                                <button onClick={logOut}>Logout</button>
+                            </div>
+                        )}
+                    </div>
+                )}
+
                 <div className='temp'>
+
                     <aside>
                         <div className='container-cabecera-dashboard'>
                             <Link to="/"><img className='logo-header' src={require("../imgs/logo.png")} alt="Logo" /></Link>
@@ -22,7 +108,11 @@ function Dashboard() {
                         </div>
                         <div className='container-menu-dashboard'>
                             <div className='menu-section'>
+<<<<<<< HEAD
+                                <Link to="/dashboard"><svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></Link>
+=======
                                 <Link to="/dashboard"><svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></Link>
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                                 <p className='p-left'><Link to="/dashboard" className='link-dashboard'>Inicio</Link></p>
                             </div>
                             <div className='menu-section'>
@@ -30,6 +120,14 @@ function Dashboard() {
                                 <p className='p-left'><Link to="/dashboard/usuarios" className='link-dashboard'>Usuarios</Link></p>
                             </div>
                             <div className='menu-section'>
+<<<<<<< HEAD
+                                <svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg>
+                                <p className='p-left'>Test</p>
+                            </div>
+                            <div className='menu-section'>
+                                <svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg>
+                                <p className='p-left'>Test</p>
+=======
                                 <Link to="/dashboard/noticias"><svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" /><path d="M14 3v5h5M16 13H8M16 17H8M10 9H8" /></svg></Link>
                                 <p className='p-left'><Link to="/dashboard/noticias" className='link-dashboard'>Noticias</Link></p>
                             </div>
@@ -40,6 +138,7 @@ function Dashboard() {
                             <div className='menu-section'>
                                 <Link to="/dashboard/imagenes"><svg className='svg-icons' xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#F5D5E0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="M20.4 14.5L16 10 4 20" /></svg></Link>
                                 <p className='p-left'><Link to="/dashboard/imagenes" className='link-dashboard'>Imágenes</Link></p>
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                             </div>
                         </div>
                     </aside>

@@ -1,27 +1,75 @@
+<<<<<<< HEAD
+import '../css/dashboard.css';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+=======
 import '../css/dashboard.css'
 import React from "react";
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 
 function Dashboard_usuarios() {
     const [users, setUsers] = useState([]);
+<<<<<<< HEAD
+    const [newUser, setNewUser] = useState({ nombre: '', email: '', contrasena: '', tipo: 'client' });
+=======
     const [newUser, setNewUser] = useState({ username: '', gmail: '', password: '', type: 'client' });
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
     const [editingUser, setEditingUser] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
 
     const fetchUsers = async () => {
         try {
+<<<<<<< HEAD
+            const response = await axios.get('http://localhost:8081/usuarios');
+            setUsers(response.data);
+        } catch (error) {
+            console.error('Error fetching users:', error);
+            toast.error('Error al cargar los usuarios');
+=======
             const response = await axios.get('http://localhost:4000/users');
             setUsers(response.data);
         } catch (error) {
             console.error('Error fetching users:', error);
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
         }
     };
 
     const handleAddUser = async () => {
+<<<<<<< HEAD
+        
+        if (!newUser.nombre || !newUser.email || !newUser.contrasena) {
+            toast.error('Por favor, completa todos los campos');
+            return;
+        }
+
+        try {
+            const userData = {
+                nombre: newUser.nombre,
+                email: newUser.email,
+                contrasena: newUser.contrasena,
+                tipo: newUser.tipo
+            };
+            await axios.post('http://localhost:8081/usuarios', userData);
+            fetchUsers();
+            toast.success('Usuario agregado con éxito');
+        } catch (error) {
+            toast.error('Error al agregar usuario');
+        }
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:8081/usuarios/${id}`);
+            fetchUsers();
+            toast.success('Usuario eliminado con éxito');
+        } catch (error) {
+            toast.error('Error al eliminar usuario');
+=======
         // Verifica si los campos están completos
         if (!newUser.username) {
             toast.error('Falta completar el campo de nombre', {
@@ -131,16 +179,50 @@ function Dashboard_usuarios() {
                     secondary: '#c87474',
                 },
             });
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
         }
     };
 
     const handleEdit = (user) => {
         setEditingUser(user);
+<<<<<<< HEAD
         setNewUser({ username: user.username, password: user.password, gmail: user.gmail, type: user.type });
+=======
+<<<<<<< HEAD
+        setNewUser({ nombre: user.nombre, email: user.email, contrasena: '', tipo: user.tipo });
+=======
+        setNewUser({ username: user.username, password: user.password, type: user.type });
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
+>>>>>>> 87a8f28610a085ebaa29593f305643c5bafa666c
         setIsEditing(true);
     };
 
     const handleUpdateUser = async () => {
+<<<<<<< HEAD
+        if (!newUser.nombre || !newUser.email || !newUser.contrasena) {
+            toast.error('Por favor, completa todos los campos');
+            return;
+        }
+
+        try {
+            const userData = {
+                nombre: newUser.nombre,
+                email: newUser.email,
+                contrasena: newUser.contrasena,
+                tipo: newUser.tipo
+            };
+            await axios.put(`http://localhost:8081/usuarios/${editingUser.id}`, userData);
+            fetchUsers();
+            setEditingUser(null);
+            setIsEditing(false);
+            setNewUser({ nombre: '', email: '', contrasena: '', tipo: '' });
+            toast.success('Usuario actualizado con éxito');
+        } catch (error) {
+            toast.error('Error al actualizar usuario');
+        }
+    };
+
+=======
         try {
             await axios.patch(`http://localhost:4000/users/${editingUser.id}`, newUser);
             fetchUsers();
@@ -176,6 +258,7 @@ function Dashboard_usuarios() {
     };
 
 
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
     useEffect(() => {
         fetchUsers();
     }, []);
@@ -253,8 +336,13 @@ function Dashboard_usuarios() {
                                                 <input
                                                     type="text"
                                                     placeholder="Nombre de usuario"
+<<<<<<< HEAD
+                                                    value={newUser.nombre}
+                                                    onChange={(e) => setNewUser({ ...newUser, nombre: e.target.value })}
+=======
                                                     value={newUser.username}
                                                     onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                                                     required
                                                 />
                                             </div>
@@ -263,8 +351,13 @@ function Dashboard_usuarios() {
                                                 <input
                                                     type="email"
                                                     placeholder="Correo electrónico"
+<<<<<<< HEAD
+                                                    value={newUser.email}
+                                                    onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+=======
                                                     value={newUser.gmail}
                                                     onChange={(e) => setNewUser({ ...newUser, gmail: e.target.value })}
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                                                     required
                                                 />
                                             </div>
@@ -273,16 +366,26 @@ function Dashboard_usuarios() {
                                                 <input
                                                     type="password"
                                                     placeholder="Contraseña"
+<<<<<<< HEAD
+                                                    value={newUser.contrasena}
+                                                    onChange={(e) => setNewUser({ ...newUser, contrasena: e.target.value })}
+=======
                                                     value={newUser.password}
                                                     onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                                                     required
                                                 />
                                             </div>
 
                                             <div className='input-box-dashboard'>
                                                 <select
+<<<<<<< HEAD
+                                                    value={newUser.tipo}
+                                                    onChange={(e) => setNewUser({ ...newUser, tipo: e.target.value })}
+=======
                                                     value={newUser.type}
                                                     onChange={(e) => setNewUser({ ...newUser, type: e.target.value })}
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                                                 >
                                                     <option value="client">Cliente</option>
                                                     <option value="admin">Admin</option>
@@ -319,6 +422,18 @@ function Dashboard_usuarios() {
                                             </thead>
                                             <tbody>
                                                 {users.filter(user =>
+<<<<<<< HEAD
+                                                    (user.nombre && user.nombre.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                                                    (user.email && user.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                                                    (user.tipo && user.tipo.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                                                    (user.fecha_registro && user.fecha_registro.includes(searchTerm))
+                                                ).map((user) => (
+                                                    <tr key={user.id}>
+                                                        <td>{user.nombre}</td>
+                                                        <td>{user.email}</td>
+                                                        <td>{user.contrasena}</td>
+                                                        <td>{user.tipo}</td>
+=======
                                                     user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
                                                     user.gmail.toLowerCase().includes(searchTerm.toLowerCase()) ||
                                                     user.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -329,6 +444,7 @@ function Dashboard_usuarios() {
                                                         <td>{user.gmail}</td>
                                                         <td>{user.password}</td>
                                                         <td>{user.type}</td>
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                                                         <td>{user.createdAT}</td>
                                                         <td>
                                                             <button className="btn-dashboard-usuarios-editar" onClick={() => handleEdit(user)}>

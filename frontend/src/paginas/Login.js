@@ -1,7 +1,13 @@
+<<<<<<< HEAD
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import '../css/login.css';
+=======
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import '../css/login.css'
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
 import Login_G from "../Logins/Login_G";
 import Login_T from "../Logins/Login_T";
 import axios from 'axios';
@@ -24,6 +30,53 @@ function Login() {
         }
     }
 
+<<<<<<< HEAD
+function Login() {
+    const [email, setEmail] = useState('');
+    const [contrasena, setContrasena] = useState('');
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch('http://localhost:8081/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, contrasena }),
+            });
+
+            if (response.ok) {
+                // Aquí puedes establecer la sesión del usuario
+                // Por ejemplo, guardar un token o indicador de sesión en localStorage
+                localStorage.setItem('userLoggedIn', true);
+
+                navigate('/'); // Usa navigate como función para redirigir al inicio
+            } else {
+                alert('Email o contraseña incorrectos');
+            }
+        } catch (error) {
+            alert('Error en el servidor');
+        }
+    };
+
+    function LogoutButton() {
+        const navigate = useNavigate();
+
+        const handleLogout = () => {
+            localStorage.removeItem('userLoggedIn');
+            navigate('/login');
+        };
+
+        return (
+            <button onClick={handleLogout}>Cerrar Sesión</button>
+        );
+    }
+
+=======
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
     return (
         <>
             <body className="body-login">
@@ -31,6 +84,13 @@ function Login() {
                     <form onSubmit={handleSubmit}>
                         <h1>Iniciar sesión</h1>
                         <div className="input-box">
+<<<<<<< HEAD
+                            <input type="email" placeholder="Correo electrónico" required value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <i className="bx bxs-user" />
+                        </div>
+                        <div className="input-box">
+                            <input type="password" placeholder="Contraseña" required value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
+=======
                             <input
                                 type="email"
                                 placeholder="Correo electrónico"
@@ -48,6 +108,7 @@ function Login() {
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
                             />
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
                             <i className="bx bxs-lock-alt" />
                         </div>
                         <div className="remember-forgot">
@@ -60,8 +121,8 @@ function Login() {
                         <button type="submit" className="btn-login">
                             ¡Comienza ahora!
                         </button>
-                        <Login_G></Login_G>
-                        <Login_T></Login_T>
+                        <Login_G />
+                        <Login_T />
                         <div className="register-link">
                             <p>
                                 No tienes cuenta? <Link to="/register">Regístrate aquí</Link>
@@ -74,4 +135,8 @@ function Login() {
     );
 }
 
+<<<<<<< HEAD
 export default Login;
+=======
+export default Login;
+>>>>>>> fc6f6774d7962f27f980eefb2cdc48392a48c0dd
