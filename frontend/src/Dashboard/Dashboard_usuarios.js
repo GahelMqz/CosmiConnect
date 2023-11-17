@@ -136,7 +136,7 @@ function Dashboard_usuarios() {
 
     const handleEdit = (user) => {
         setEditingUser(user);
-        setNewUser({ username: user.username, password: user.password, type: user.type });
+        setNewUser({ username: user.username, password: user.password, gmail: user.gmail, type: user.type });
         setIsEditing(true);
     };
 
